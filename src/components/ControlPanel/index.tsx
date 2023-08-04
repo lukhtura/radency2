@@ -15,9 +15,10 @@ import styles from 'components/ControlPanel/controlPanel.module.scss';
 const ControlPanel = () => {
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
+  const mainPage = pathname === '/';
 
   function renderNavigateButton(): JSX.Element {
-    if (pathname === '/') {
+    if (mainPage) {
       return (
         <Link to="/archive">
           <CustomButton type="button">To archive</CustomButton>
@@ -34,9 +35,12 @@ const ControlPanel = () => {
 
   return (
     <div className={styles.container}>
-      <CustomButton type="submit" onClick={() => dispatch(openFormModal())}>
-        Create Note
-      </CustomButton>
+      {mainPage && (
+        <CustomButton type="submit" onClick={() => dispatch(openFormModal())}>
+          Create Note
+        </CustomButton>
+      )}
+
       {renderNavigateButton()}
     </div>
   );

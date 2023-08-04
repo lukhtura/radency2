@@ -27,7 +27,7 @@ import closeIcon from 'assets/close-icon.svg';
 
 const FormModal = () => {
   const dispatch = useAppDispatch();
-  const { isFormModalOpen, title, content, category } = useAppSelector(
+  const { isFormModalOpen, title, content, category, id } = useAppSelector(
     (state) => state.formModalSlice
   );
 
@@ -64,7 +64,7 @@ const FormModal = () => {
   });
 
   /* UPDATES FORM VALUES FROM FORM STATE SLICE */
-  function updateFormValues() {
+  function updateFormValues(): void {
     reset({
       title,
       content,
@@ -83,7 +83,7 @@ const FormModal = () => {
     addNote(data);
   };
 
-  const buttonText = 'Add note';
+  const buttonText: string = id === 0 ? 'Add note' : 'Save';
 
   if (!isFormModalOpen) return null;
 

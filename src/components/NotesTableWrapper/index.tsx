@@ -1,31 +1,30 @@
-// hooks
-import useNotesData from 'engine/hooks/useNotesData';
-
 // components
 import TableHeader from 'components/TableHeader';
-import TableItem from 'components/TableItem';
+import NotesTableItem from 'components/NotesTableItem';
 
 // types
 import { NoteData } from 'types';
 
 //style
-import styles from 'components/TableWrapper/tableWrapper.module.scss';
+import styles from 'components/NotesTableWrapper/notesTableWrapper.module.scss';
 
 const headerLabels = ['Title', 'Created', 'Category', 'Content', 'Dates'];
 
-interface TableWrapperProps {
+interface NotesTableWrapperProps {
+  data: NoteData[];
   isArchivedMode: boolean;
 }
 
-const TableWrapper = ({ isArchivedMode }: TableWrapperProps) => {
-  const notesData: NoteData[] = useNotesData();
-
+const NotesTableWrapper = ({
+  data,
+  isArchivedMode,
+}: NotesTableWrapperProps) => {
   function renderNotes(notesArr: NoteData[]) {
     return notesArr.map(
       (note) =>
         /* CHECK ARCHIVED STATUS */
         note.isArchived === isArchivedMode && (
-          <TableItem
+          <NotesTableItem
             key={note.id}
             id={note.id}
             title={note.title}
@@ -40,10 +39,10 @@ const TableWrapper = ({ isArchivedMode }: TableWrapperProps) => {
 
   return (
     <div className={styles.wrapper}>
-      <TableHeader labels={headerLabels} />
-      <ul>{renderNotes(notesData)}</ul>
+      <TableHeader labels={headerLabels} showButtons={true} />
+      <ul>{renderNotes(data)}</ul>
     </div>
   );
 };
 
-export default TableWrapper;
+export default NotesTableWrapper;

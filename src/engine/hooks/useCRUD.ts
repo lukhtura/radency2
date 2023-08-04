@@ -8,6 +8,8 @@ import {
   addItem,
   deleteItem,
   changeIsArchivedStatus,
+  deleteAllItems,
+  archivateAllItems,
 } from 'engine/redux/slices/noteSlice';
 import {
   openFormModal,
@@ -27,6 +29,8 @@ interface UseCRUDRes {
   deleteNote: (id: number) => void;
   toggleArchivedStatus: (id: number) => void;
   editNode: (id: number) => void;
+  deleteAllNotes: () => void;
+  archivateAllNotes: () => void;
 }
 
 function useCRUD(): UseCRUDRes {
@@ -78,11 +82,21 @@ function useCRUD(): UseCRUDRes {
     }
   }
 
+  function deleteAllNotes() {
+    dispatch(deleteAllItems());
+  }
+
+  function archivateAllNotes() {
+    dispatch(archivateAllItems());
+  }
+
   return {
     addNote,
     deleteNote,
     toggleArchivedStatus,
     editNode,
+    deleteAllNotes,
+    archivateAllNotes,
   };
 }
 

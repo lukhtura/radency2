@@ -1,0 +1,43 @@
+@import "scss/variables";
+
+.item {
+  margin: 10px 0;
+  padding: 15px;
+  width: 100%;
+  background-color: rgb(206, 206, 240);
+  display: grid;
+  grid-template-columns: $main-template-grid;
+  border-radius: 5px;
+  align-items: center;
+  -webkit-box-shadow: 1px 12px 13px -11px rgba(66, 68, 90);
+  -moz-box-shadow: 1px 12px 13px -11px rgba(66, 68, 90);
+  box-shadow: 1px 12px 13px -11px rgba(66, 68, 90);
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  width: 36px;
+}
+
+.title,
+.text {
+  word-wrap: break-word;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.text {
+  text-align: center;
+}
+
+.button {
+  width: 36px;
+}
