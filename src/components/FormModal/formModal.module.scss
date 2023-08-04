@@ -1,0 +1,42 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Затемнение с полупрозрачностью */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.form {
+  width: 450px;
+  height: 450px;
+  display: flex;
+  justify-content: space-around;
+  padding: 30px;
+  flex-direction: column;
+}
+
+.textInput {
+  width: 100%;
+}
+
+.closeBtn {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 24px;
+}
+
+.error {
+  font-weight: 500;
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}

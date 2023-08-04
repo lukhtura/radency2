@@ -1,10 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import notesDataSlice from 'engine/redux/slices/notesDataSlice';
+import noteSlice from 'engine/redux/slices/noteSlice';
+import formModalSlice from 'engine/redux/slices/formModalSlice';
+import technicalSlice from 'engine/redux/slices/technicalSlice';
 
 export const store = configureStore({
   reducer: {
-    notesDataSlice,
+    noteSlice,
+    formModalSlice,
+    technicalSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
   devTools: process.env.NODE_ENV !== 'production',

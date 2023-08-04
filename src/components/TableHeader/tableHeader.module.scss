@@ -1,0 +1,20 @@
+@import "scss/variables";
+
+.header {
+  display: grid;
+  grid-template-columns: $main-template-grid;
+  border-radius: 5px;
+  align-items: center;
+  padding: 10px;
+  color: white;
+  background-color: rgb(155, 119, 119);
+}
+
+.label {
+  text-align: center;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: flex-end;
+}
