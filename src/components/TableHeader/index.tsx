@@ -5,15 +5,27 @@ import TableButtonsPanel from 'components/TableButtonsPanel';
 import styles from 'components/TableHeader/tableHeader.module.scss';
 
 interface TableHeaderProps {
+  columns: number;
   labels: string[];
   showButtons?: boolean;
 }
 
-const TableHeader = ({ labels, showButtons = false }: TableHeaderProps) => {
+const TableHeader = ({
+  columns,
+  labels,
+  showButtons = false,
+}: TableHeaderProps) => {
   return (
-    <div className={styles.header}>
+    <div
+      className={styles.header}
+      style={{
+        gridTemplateColumns: `repeat(${columns}, minmax(100px, 1fr))`,
+      }}
+    >
       {labels.map((label) => (
-        <p className={styles.label}>{label}</p>
+        <p key={label} className={styles.label}>
+          {label}
+        </p>
       ))}
       {showButtons && <TableButtonsPanel type="header" />}
     </div>

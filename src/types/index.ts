@@ -1,11 +1,12 @@
 export interface NoteData {
-  id: number;
+  id: string;
   date: string;
   title: string;
   category: string;
   content: string;
   dates: string;
   isArchived: boolean;
+  icon: string;
 }
 
 export interface NoteListItemData extends Omit<NoteData, 'isArchived'> {}

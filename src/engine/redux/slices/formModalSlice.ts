@@ -4,7 +4,7 @@ import { EditNoteData } from 'types';
 
 interface FormModalSliceState {
   isFormModalOpen: boolean;
-  id: number;
+  id: string;
   title: string;
   content: string;
   category: string;
@@ -12,7 +12,7 @@ interface FormModalSliceState {
 
 const initialState: FormModalSliceState = {
   isFormModalOpen: false,
-  id: 0,
+  id: '',
   title: '',
   content: '',
   category: 'task',
@@ -28,7 +28,7 @@ const formModalSlice = createSlice({
     closeFormModal: (state) => {
       state.isFormModalOpen = false;
       // reset state
-      state.id = 0;
+      state.id = '';
       state.title = '';
       state.content = '';
       state.category = 'task';

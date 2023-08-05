@@ -16,7 +16,7 @@ import editIcon from 'assets/pencil-icon.svg';
 type PanelType = 'header' | 'item';
 
 interface TableButtonsPanelProps {
-  id?: number;
+  id?: string;
   type: PanelType;
 }
 

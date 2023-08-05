@@ -44,7 +44,7 @@ const FormModal = () => {
         .string()
         .required()
         .min(3, 'at least 3 chars')
-        .max(50, 'max. 50 chars'),
+        .max(100, 'max. 100 chars'),
       category: yup.string().required(),
     })
     .required();
@@ -83,7 +83,7 @@ const FormModal = () => {
     addNote(data);
   };
 
-  const buttonText: string = id === 0 ? 'Add note' : 'Save';
+  const buttonText: string = id ? 'Add note' : 'Save';
 
   if (!isFormModalOpen) return null;
 
@@ -124,7 +124,7 @@ const FormModal = () => {
                 control={control}
                 render={({ field }) => (
                   <TextField
-                    inputProps={{ maxLength: 50 }}
+                    inputProps={{ maxLength: 100 }}
                     className={styles.textInput}
                     label="Content"
                     variant="outlined"
@@ -137,19 +137,19 @@ const FormModal = () => {
               )}
             </div>
             <Controller
+              control={control}
+              name="category"
+              defaultValue="task"
               render={({ field }) => (
                 <Select
                   {...field}
                   onChange={(e) => field.onChange(e.target.value)}
                 >
-                  <MenuItem value="task">Task</MenuItem>
-                  <MenuItem value="idea">Idea</MenuItem>
-                  <MenuItem value="random thoughts">Random Thoughts</MenuItem>
+                  <MenuItem value="task">task</MenuItem>
+                  <MenuItem value="idea">idea</MenuItem>
+                  <MenuItem value="random thoughts">random thoughts</MenuItem>
                 </Select>
               )}
-              control={control}
-              name="category"
-              defaultValue="task"
             />
             <CustomButton type="submit">{buttonText}</CustomButton>
           </form>

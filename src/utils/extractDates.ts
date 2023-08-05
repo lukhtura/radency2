@@ -5,7 +5,7 @@ function extractDates(contentText: string): string {
   const datesArr = contentText.match(regex);
   const datesStr = datesArr?.join(', ');
 
-  return datesStr || '';
+  return datesStr || ' ';
 }
 
 export default extractDates;

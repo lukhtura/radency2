@@ -2,6 +2,7 @@
 
 //core
 import { useAppDispatch, useAppSelector } from 'engine/redux/hooks';
+import { v4 as uuid } from 'uuid';
 
 // actions
 import {
@@ -24,18 +25,21 @@ import extractDates from 'utils/extractDates';
 // types
 import { NoteData, EditNoteData, FormData } from 'types';
 
+// utils
+import getCategoryIcon from 'utils/getCategoryIcon';
+
 interface UseCRUDRes {
   addNote: (data: FormData) => void;
-  deleteNote: (id: number) => void;
-  toggleArchivedStatus: (id: number) => void;
-  editNode: (id: number) => void;
+  deleteNote: (id: string) => void;
+  toggleArchivedStatus: (id: string) => void;
+  editNode: (id: string) => void;
   deleteAllNotes: () => void;
   archivateAllNotes: () => void;
 }
 
 function useCRUD(): UseCRUDRes {
   const dispatch = useAppDispatch();
-  const { notes, notesIdCounter } = useAppSelector((state) => state.noteSlice);
+  const { notes } = useAppSelector((state) => state.noteSlice);
   const { id } = useAppSelector((state) => state.formModalSlice);
 
   function addNote(data: FormData): void {
@@ -44,30 +48,32 @@ function useCRUD(): UseCRUDRes {
     /* GET DATE */
     const date = new Date();
 
+    /* CREATE NOTE OBJECT */
     const noteObj: NoteData = {
       title,
-      category,
-      content,
-      // if item already exist, use id from form state slice, if not, create new
-      id: id !== 0 ? id : notesIdCounter,
       date: formatDate(date),
+      category: category,
+      // if item already exist, use id from form state slice, if not, create new
+      id: id ? id : uuid(),
+      content,
       dates: extractDates(content),
       isArchived: false,
+      icon: getCategoryIcon(category),
     };
 
     dispatch(addItem(noteObj));
     dispatch(closeFormModal());
   }
 
-  function deleteNote(id: number): void {
+  function deleteNote(id: string): void {
     dispatch(deleteItem(id));
   }
 
-  function toggleArchivedStatus(id: number): void {
+  function toggleArchivedStatus(id: string): void {
     dispatch(changeIsArchivedStatus(id));
   }
 
-  function editNode(id: number) {
+  function editNode(id: string) {
     const editedNote = notes.find((note) => note.id === id);
     if (editedNote) {
       const editedNoteData: EditNoteData = {

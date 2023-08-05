@@ -1,12 +1,10 @@
-@import "scss/variables";
-
 .item {
   margin: 10px 0;
   padding: 15px;
   width: 100%;
   background-color: rgb(206, 206, 240);
   display: grid;
-  grid-template-columns: $main-template-grid;
+  // grid-template-columns: $main-template-grid;
   border-radius: 5px;
   align-items: center;
   -webkit-box-shadow: 1px 12px 13px -11px rgba(66, 68, 90);
