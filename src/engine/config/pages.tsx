@@ -1,3 +1,5 @@
+/* PAGES FOR ROUTER */
+
 // pages
 import MainPage from 'pages/MainPage';
 import ArchivePage from 'pages/ArchivePage';

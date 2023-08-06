@@ -1,3 +1,5 @@
+/* ROUTER WITH ROUTES */
+
 import {
   createBrowserRouter,
   createRoutesFromElements,

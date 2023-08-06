@@ -33,6 +33,7 @@ const FormModal = () => {
 
   const { addNote } = useCRUD();
 
+  // SCHEMA FOR FORM VALIDATION
   const schema = yup
     .object({
       title: yup
@@ -49,6 +50,7 @@ const FormModal = () => {
     })
     .required();
 
+  // REACT HOOK FORM
   const {
     control,
     handleSubmit,
@@ -79,6 +81,7 @@ const FormModal = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFormModalOpen]);
 
+  //  SUBMIT HANDLER
   const onSubmit: SubmitHandler<FormData> = (data) => {
     addNote(data);
   };

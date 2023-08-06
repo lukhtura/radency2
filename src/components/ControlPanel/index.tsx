@@ -1,7 +1,6 @@
 //core
 import { Link } from 'react-router-dom';
-import { useAppDispatch } from 'engine/redux/hooks';
-import { useLocation } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from 'engine/redux/hooks';
 
 // actions
 import { openFormModal } from 'engine/redux/slices/formModalSlice';
@@ -14,8 +13,10 @@ import styles from 'components/ControlPanel/controlPanel.module.scss';
 
 const ControlPanel = () => {
   const dispatch = useAppDispatch();
-  const { pathname } = useLocation();
-  const mainPage = pathname === '/';
+  const currenPage = useAppSelector(
+    (state) => state.technicalSlice.currentPage
+  );
+  const mainPage = currenPage === '/';
 
   function renderNavigateButton(): JSX.Element {
     if (mainPage) {

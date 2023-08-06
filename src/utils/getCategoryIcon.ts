@@ -1,4 +1,4 @@
-/* THIS HELPER PICK NEEDE ICON FOR NOTES */
+/* THIS HELPER PICK NEEDED ICON FOR NOTES */
 
 import taskIcon from 'assets/task-icon.svg';
 import ideaIcon from 'assets/idea-icon.svg';

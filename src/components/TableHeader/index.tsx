@@ -11,9 +11,9 @@ interface TableHeaderProps {
 }
 
 const TableHeader = ({
-  columns,
+  columns, // number of columns in table
   labels,
-  showButtons = false,
+  showButtons = false, // if true, add TableButtonPanel
 }: TableHeaderProps) => {
   return (
     <div

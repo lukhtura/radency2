@@ -19,12 +19,12 @@ interface TableItemProps {
 }
 
 const TableItem = ({
-  columns,
+  columns, // number of columns
   id,
   title,
   icon,
   data,
-  showButtons = false,
+  showButtons = false, // if true, add TableButtonPanel
 }: TableItemProps) => {
   const preparedData = Object.values(data);
 
